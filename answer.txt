@@ -1,0 +1,10 @@
+Ex 6.1:
+-	Question 1: What happens if users choose "Cancel"? 
+The dialog displays "You've chosen: No". This happens because JOptionPane.showConfirmDialog() returns JOptionPane.CANCEL_OPTION (value 2), which is not equal to JOptionPane.YES_OPTION (value 0), causing the ternary operator (option == JOptionPane.YES_OPTION ? "Yes" : "No") to evaluate to "No". 
+-	Question 2: How to customize the options to users, e.g. only two options: "Yes" and "No", OR "I do" and "I don't"? 
+Use overloaded versions of JOptionPane.showOptionDialog() or JOptionPane.showConfirmDialog():
+Only "Yes" and "No": Pass JOptionPane.YES_NO_OPTION as the optionType parameter:
+int option = JOptionPane.showConfirmDialog(null, "Do you want to change to the first class ticket?", "Select an Option", JOptionPane.YES_NO_OPTION);
+Custom labels like "I do" and "I don't": Use JOptionPane.showOptionDialog() with a custom Object[] array:
+String[] options = {"I do", "I don't"};
+int option = JOptionPane.showOptionDialog(null, "Do you want to change to the first class ticket?", "Custom Options", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
